@@ -1,0 +1,39 @@
+classDiagram
+    Usuario  --|> Sistema de Login
+    Sistema de Login --|> Fila de Espera
+    Fila de Espera  --|> Gerenciador de Ingressos
+    Gerenciador de Ingressos --|> Servico de Compra
+    
+    Usuario : + ID do usuario
+    Usuario : + Nome
+    Usuario : + E-mail
+    Usuario : + Senha
+    Usuario : + Login()
+    Usuario : + Cadastro()
+    Usuario : + Solicitar compra de ingresso()
+    
+    Sistema de Login : + Banco de dados de usuarios
+    Sistema de Login : + Mecanismo de hash para senhas
+    Sistema de Login : + Token de autenticacao
+    Sistema de Login : + Verificar credenciais()
+    Sistema de Login : + Gerar token de autenticacao()
+    Sistema de Login : + Validar token de autenticacao()
+    
+    Fila de Espera : + Lista de usuarios aguardando
+    Fila de Espera : + Posicao atual na fila
+    Fila de Espera : + Adicionar usuario a fila()
+    Fila de Espera : + Remover usuario da fila()
+    Fila de Espera : + Obter posicao atual na fila()
+    
+    Gerenciador de Ingressos : + Quantidade total de ingressos
+    Gerenciador de Ingressos : + Quantidade de ingressos disponiveis
+    Gerenciador de Ingressos : + Verificar disponibilidade de ingressos()
+    Gerenciador de Ingressos : + Reservar ingresso()
+    Gerenciador de Ingressos : + Confirmar compra de ingresso()
+    Gerenciador de Ingressos : + Cancelar reserva()
+    
+    Servico de Compra : + Informacoes do ingresso
+    Servico de Compra : + Solicitar compra de ingresso()
+    Servico de Compra : + Processar pagamento()
+    Servico de Compra : + Confirmar compra()
+    Servico de Compra : + Gerar codigo de barras do ingresso()
